@@ -1,0 +1,162 @@
+/*==================================*/
+/* ESTILOS GENERALES Y FONDO   */
+/*==================================*/
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fdf5e6;
+    color: #4a235a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    
+    /* Estilos para la foto de fondo (usando la ruta local) */
+    background-image: url('karla.jpg'); /* Asegúrate de que el nombre coincida con tu archivo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Oscurece la foto sutilmente para que el texto resalte */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 1;
+}
+
+/*==================================*/
+/* ESTILOS DEL CONTENEDOR      */
+/*==================================*/
+
+.invitation-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    padding: 50px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    position: relative;
+    max-width: 600px;
+    animation: bounceIn 1s ease-out;
+}
+
+/*==================================*/
+/* ESTILOS DEL TEXTO Y BOTÓN   */
+/*==================================*/
+
+.title {
+    font-size: 3.5em;
+    font-weight: 700;
+    color: #8e44ad;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+    font-size: 1.5em;
+    color: #34495e;
+    margin-top: 0;
+}
+
+.details {
+    margin: 30px 0;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.map-btn {
+    display: inline-block;
+    background-color: #f1c40f;
+    color: #333;
+    text-decoration: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.map-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/*==================================*/
+/* ANIMACIONES                 */
+/*==================================*/
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Efecto de Confeti */
+.invitation-container::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: repeating-linear-gradient(45deg,
+        rgba(231,76,60,0.5), rgba(231,76,60,0.5) 10px,
+        rgba(241,196,15,0.5) 10px, rgba(241,196,15,0.5) 20px,
+        rgba(155,89,182,0.5) 20px, rgba(155,89,182,0.5) 30px,
+        rgba(52,152,219,0.5) 30px, rgba(52,152,219,0.5) 40px
+    );
+    opacity: 0.8;
+    animation: confettiFall 5s infinite linear;
+    z-index: 10;
+}
+
+@keyframes confettiFall {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(100vh); }
+}
+
+/*==================================*/
+/* RESPONSIVE (PARA CELULARES) */
+/*==================================*/
+
+@media (max-width: 768px) {
+    
+    .invitation-container {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+    
+    .title {
+        font-size: 2.2em;
+    }
+    
+    .subtitle {
+        font-size: 1em;
+    }
+    
+    .details {
+        font-size: 0.9em;
+    }
+    
+    .map-btn {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+}
